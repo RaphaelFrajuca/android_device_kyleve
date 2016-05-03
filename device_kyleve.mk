@@ -79,6 +79,14 @@ PRODUCT_PACKAGES += \
 # Samsung Doze
 PRODUCT_PACKAGES += \
 	SamsungDoze
+	
+# Broadcom stuff
+ADDITIONAL_DEFAULT_PROPERTIES += \
+	persist.brcm.log=none \
+	persist.brcm.cp_crash=none \
+	persist.brcm.ap_crash=none \
+	persist.brcm.force_ramdump=0 \
+	persist.sys.usb.sport=1
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
