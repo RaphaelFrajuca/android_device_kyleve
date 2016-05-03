@@ -16,6 +16,10 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_BOOTLOADER_BOARD_NAME := hawaii
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
+BOARD_VENDOR := samsung
+
+# Disable prebuilt chromium
+PRODUCT_PREBUILT_WEBVIEWCHROMIUM := false
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := kyleve,S7392,GT-S7392,hawaii
@@ -66,7 +70,7 @@ WIFI_BAND                   := 802_11_ABG
 # of an SDK AVD. Note that this operation only works on Linux for now
 ifeq ($(HOST_OS),linux)
   ifeq ($(WITH_DEXPREOPT),)
-    WITH_DEXPREOPT := true
+    WITH_DEXPREOPT := false
   endif
 endif
 
@@ -84,7 +88,8 @@ BOARD_USE_MHEAP_SCREENSHOT := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 TARGET_USES_ION := true
 HWUI_COMPILE_FOR_PERF := true
-COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS -DHAWAII_HWC -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS -DHAWAII_HWC
 
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
